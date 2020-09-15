@@ -4,8 +4,6 @@ title: About Me
 permalink: /about/
 ---
 
-This website is powered by **[fastpages](https://github.com/fastai/fastpages)** [^1].
+Studying Computer Science from Pakistan Institute of Engineering and Applied Sciences (PIEAS). Interested in Deep Learning and Computer Vision. Here I write about the new things I learn related to CS/DL/CV.
 
-
-
-[^1]:a blogging platform that natively supports Jupyter notebooks in addition to other formats.
+You can email me at imhassanaskary [at] gmail [dot] com or view my resume [here]({{ site.baseurl }}/assets/Hassan-Askary-Resume.pdf "Hassan Askary's Resume.").

@@ -8,4 +8,10 @@
 /*----- ADD YOUR STYLES BELOW -------*/
 
 // If you want to turn off dark background for syntax highlighting, comment or delete the below line.
-@import "minima/fastpages-dracula-highlight"; 
+@import "minima/fastpages-dracula-highlight";
+
+.page-content {
+        -webkit-font-smoothing: antialiased !important;
+        text-rendering: optimizeLegibility !important;
+        font-family: "Inter", "Helvetica Neue", "Helvetica", "Roboto", Roboto, "Segoe UI", SegoeUI, "Segoe WP", "Tahoma", "Arial", sans-serif !important;
+}
