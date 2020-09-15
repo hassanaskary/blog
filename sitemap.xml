@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>https://hassanaskary.github.io/blog/markdown/2020/01/14/test-markdown-post.html</loc>
-<lastmod>2020-01-14T00:00:00-06:00</lastmod>
+<loc>https://hassanaskary.com/vim/conda/python/2020/04/27/how-to-setup-neovim-with-python-provider-using-conda.html</loc>
+<lastmod>2020-04-27T00:00:00-05:00</lastmod>
 </url>
 <url>
-<loc>https://hassanaskary.github.io/blog/jupyter/2020/02/20/test.html</loc>
-<lastmod>2020-02-20T00:00:00-06:00</lastmod>
+<loc>https://hassanaskary.com/python/pytorch/2020/05/20/getting-started-with-pytorch.html</loc>
+<lastmod>2020-05-20T00:00:00-05:00</lastmod>
 </url>
 <url>
-<loc>https://hassanaskary.github.io/blog/fastcore/</loc>
-<lastmod>2020-09-01T00:00:00-05:00</lastmod>
+<loc>https://hassanaskary.com/about/</loc>
 </url>
 <url>
-<loc>https://hassanaskary.github.io/blog/about/</loc>
+<loc>https://hassanaskary.com/</loc>
 </url>
 <url>
-<loc>https://hassanaskary.github.io/blog/</loc>
+<loc>https://hassanaskary.com/search/</loc>
 </url>
 <url>
-<loc>https://hassanaskary.github.io/blog/search/</loc>
+<loc>https://hassanaskary.com/categories/</loc>
 </url>
 <url>
-<loc>https://hassanaskary.github.io/blog/categories/</loc>
+<loc>https://hassanaskary.com/assets/Hassan-Askary-Resume.pdf</loc>
+<lastmod>2020-09-15T11:00:00-05:00</lastmod>
 </url>
 </urlset>
