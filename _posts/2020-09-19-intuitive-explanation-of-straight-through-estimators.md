@@ -28,7 +28,7 @@ This function will return 1 for every value that is greater than 0 otherwise it 
 
 As mentioned earlier, the problem with this function is that its gradient is zero. To overcome this issue we will use a straight-through estimator in the backward pass. 
 
-A straight-through estimator is exactly what is sounds like. It estimates the gradients of a function. Specifically it ignores the derivative of the threshold function and passes on the incoming gradient as if the function was an identity function. The following diagram will help explain it better.
+A straight-through estimator is exactly what it sounds like. It estimates the gradients of a function. Specifically it ignores the derivative of the threshold function and passes on the incoming gradient as if the function was an identity function. The following diagram will help explain it better.
 
 ![]({{ site.baseurl }}/images/intuitive-explanation-of-ste-with-code/ste-visualization.png "Visualization of how straight-through estimators work.")
 
