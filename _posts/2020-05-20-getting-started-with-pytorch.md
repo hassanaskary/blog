@@ -1,7 +1,7 @@
 ---
 layout: post
 toc: true
-title: Getting Started with PyTorch
+title: "Getting Started with PyTorch"
 description: Guide to understanding PyTorch and developing your first model using it.
 categories: [python, pytorch]
 comments: false

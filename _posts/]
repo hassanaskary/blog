@@ -1,0 +1,89 @@
+---
+layout: post
+toc: true
+title: "Intuitive Explanation of Straight-Through Estimators with PyTorch Implementation"
+description: Straight-Through Estimators are used to estimate the gradients of a discrete function.
+categories: [python, pytorch, deep learning]
+comments: false
+image: images/intuitive-explanation-of-ste-with-code/ste-visualization.png
+---
+
+Sometimes we want to put a threshold function at the output of a layer. This can be for a variety of reasons. One of them is that we want to summarize the activations into binary values. This binarization of activations can be useful in autoencoders.
+
+However, thresholding poses a problem during backpropagation. The derivative of threshold functions is zero. This lack of gradient results in our network not learning anything. To solve this problem we use straight-through estimators (STE).
+
+# What is a Straight-Through Estimator?
+
+Lets suppose we want to binarize the activations of a layer using the following function:
+
+$$
+f(x) =
+\begin{cases}
+1,  & x > 0 \\
+0, & x \le 0
+\end{cases}
+$$
+
+This function will return 1 for every value that is greater than 0 otherwise it will return 0.
+
+As mentioned earlier, the problem with this function is that its gradient is zero. To overcome this issue we will use a straight-through estimator in the backward pass. 
+
+A straight-through estimator is exactly what is sounds like. It estimates the gradients of a function. Specifically it ignores the derivative of the threshold function and passes on the incoming gradient as if the function was an identity function. The following diagram will help explain it better.
+
+![]({{ site.baseurl }}/images/intuitive-explanation-of-ste-with-code/ste-visualization.png "Visualization of how straight-through estimators work.")
+
+You can see how the gradient of the threshold function is bypassed in the backward pass. That's it, this is what a straight-through estimator does. It makes the gradient of the threshold function look like the gradient of the identity function.
+
+# Implementation in PyTorch
+
+As of right now, PyTorch doesn't include an implementation of an STE in its APIs. So, we will have to implement it ourselves. To do this we will need to create a `Function` class and a `Module` class. The `Function` class will contain the forward and backward functionality of the STE. The `Module` class is where the STE function object will be created and used. We will use the STE module object in our neural networks.
+
+Below is the implementation of the STE `Function` class:
+
+```python
+class STEFunction(torch.autograd.Function):
+    @staticmethod
+    def forward(ctx, input):
+        return (input > 0).float()
+
+    @staticmethod
+    def backward(ctx, grad_output):
+        return F.hardtanh(grad_output)
+```
+
+PyTorch lets us define custom autograd functions with forward and backward functionality. Here we have defined an autograd function for a straight-through estimator. In the forward pass we want to convert all the values in the input tensor from floating point to binary. In the backward pass we want to pass the incoming gradients without modifying them. This is to mimic the identity function. However, here we are performing the `F.hardtanh` operation on the incoming gradients. This operation will clamp the values to -1 and 1. We are doing this so that the gradients do not get too big.
+
+Now, lets implement the STE `Module` class:
+
+```python
+class StraightThroughEstimator(nn.Module):
+    def __init__(self):
+        super(StraightThroughEstimator, self).__init__()
+
+    def forward(self, x):
+        x = STEFunction.apply(x)
+        return x
+```
+
+You can see that we have used the STE Function class we defined previously in the forward function. To use autograd fucntions we have to pass the input to the apply method. Now, we can use this module in our neural networks.
+
+A common way to use STE is inside the bottleneck layers of autoencoders. Here is an implementation of such an autoencoder:
+
+```python
+class Autoencoder(nn.Module):
+    def __init__(self):
+        super(Autoencoder, self).__init__()
+
+        self.encoder = nn.Sequential()
+        self.decoder = nn.Sequential()
+
+    def forward(self, x, encode=False, decode=False):
+        if encode:
+            x = self.encoder(x)
+        elif decode:
+            x = self.decoder(x)
+        else:
+            encoding = self.encoder(x)
+            x = self.decoder(encoding)
+        return x
+```
