@@ -141,7 +141,7 @@ window.onload = wrap_img;
 
 <p>As mentioned earlier, the problem with this function is that its gradient is zero. To overcome this issue we will use a straight-through estimator in the backward pass.</p>
 
-<p>A straight-through estimator is exactly what is sounds like. It estimates the gradients of a function. Specifically it ignores the derivative of the threshold function and passes on the incoming gradient as if the function was an identity function. The following diagram will help explain it better.</p>
+<p>A straight-through estimator is exactly what it sounds like. It estimates the gradients of a function. Specifically it ignores the derivative of the threshold function and passes on the incoming gradient as if the function was an identity function. The following diagram will help explain it better.</p>
 
 <p><img src="/images/intuitive-explanation-of-ste-with-code/ste-visualization.png" alt="" title="Visualization of how straight-through estimators work."></p>
 
